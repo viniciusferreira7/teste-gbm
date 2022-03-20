@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useFetch } from '../../customHook/useFetch';
 
-export const SummaryObs = () => {
+export const Observation = () => {
   const inputRef = useRef();
   const text = useRef();
 
@@ -11,11 +11,9 @@ export const SummaryObs = () => {
   );
 
   const [value, setValue] = useState(`Carregando observações...`);
-  //eslint-disable-next-line
   const [send, setSend] = useState({
     description: 'Produtividade alta no terminal da Rumo',
   });
-  //eslint-disable-next-line
   const [edit, setEdit] = useState(false);
 
   useEffect(() => {
@@ -51,8 +49,6 @@ export const SummaryObs = () => {
     setEdit((e) => !e);
     setSend({ description: text.current });
   };
-  console.log(text.current);
-  console.log(result);
 
   return (
     <>

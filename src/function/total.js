@@ -6,7 +6,6 @@ export const total = (result) => {
 
   const reducer = (number, nextNumber) => {
     return number + nextNumber;
-    //return parseFloat(number.replace(',', '.')) + parseFloat(nextNumber.replace(',', '.'));
   };
 
   const soma = n.reduce(reducer);
