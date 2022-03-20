@@ -3,52 +3,74 @@ import { useFetch } from '../../customHook/useFetch';
 
 export const SummaryObs = () => {
   const inputRef = useRef();
+  const text = useRef();
 
   //eslint-disable-next-line
   const [result, loading] = useFetch(
     'https://api.tot.apigbmtech.com/api/selective-process/observation?authorization=67c9d5c3887b64c33671bb25f681753a',
   );
-  const [value, setValue] = useState('Carregando observações...');
+
+  const [value, setValue] = useState(`Carregando observações...`);
   //eslint-disable-next-line
   const [send, setSend] = useState({
-    description: 'Carregando...',
+    description: 'Produtividade alta no terminal da Rumo',
   });
   //eslint-disable-next-line
   const [edit, setEdit] = useState(false);
 
   useEffect(() => {
-    const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(send),
-    };
+    if (result !== null) text.current = result[0].observation;
+  }, [result]);
 
-    fetch(
-      'https://api.tot.apigbmtech.com/api/selective-process/observation?authorization=67c9d5c3887b64c33671bb25f681753a',
-      requestOptions,
-    ).then((response) => response.json());
-  }, [send]);
+  useEffect(() => {
+    if (edit) {
+      const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json; charset=UTF-8' },
+        body: JSON.stringify(send),
+      };
+
+      fetch(
+        'https://api.tot.apigbmtech.com/api/selective-process/observation?authorization=67c9d5c3887b64c33671bb25f681753a',
+        requestOptions,
+      ).then((response) => response.json());
+    }
+  }, [send, edit]);
+
+  useEffect(() => {
+    setSend({ description: value });
+  }, [edit, value]);
 
   const handleClick = () => {
     setEdit((e) => !e);
-    console.log(send);
-    setSend({ observation: value });
+    setSend({ description: value });
+    text.current = send.description;
   };
 
+  const handleClickCancel = () => {
+    setEdit((e) => !e);
+    setSend({ description: text.current });
+  };
+  console.log(text.current);
   console.log(result);
 
   return (
     <>
-      {edit ? (
+      {!edit ? (
         <>
-          <button onClick={() => handleClick()}>Salvar</button>
-          <button>Cancelar</button>
-          <input ref={inputRef} type="text" value={value} onChange={() => setValue(inputRef.current.value)} />
+          <button onClick={() => handleClick()}>Editar</button>
+          <p>{text.current}</p>
         </>
       ) : (
         <>
-          <button onClick={() => handleClick()}>Editar</button>
-          <p>{value}</p>
+          <button onClick={() => handleClick()}>Salvar</button>
+          <button onClick={() => handleClickCancel()}>Cancelar</button>
+          <textarea
+            ref={inputRef}
+            type="text"
+            value={value}
+            onChange={() => setValue(inputRef.current.value)}
+          ></textarea>
         </>
       )}
     </>
