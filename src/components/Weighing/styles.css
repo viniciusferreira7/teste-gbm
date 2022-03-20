@@ -1,0 +1,15 @@
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-grow: 30px;
+}
+
+
+.wrapper h4 {
+  font-weight: normal;
+  text-align: center;
+}
+.group{
+  width: 100%;
+  display: flex;
+}

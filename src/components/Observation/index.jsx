@@ -10,11 +10,11 @@ export const Observation = () => {
     'https://api.tot.apigbmtech.com/api/selective-process/observation?authorization=67c9d5c3887b64c33671bb25f681753a',
   );
 
+  const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(`Carregando observações...`);
   const [send, setSend] = useState({
     description: 'Produtividade alta no terminal da Rumo',
   });
-  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     if (result !== null) text.current = result[0].observation;

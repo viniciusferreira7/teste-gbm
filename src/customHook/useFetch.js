@@ -34,9 +34,6 @@ export const useFetch = (url, options) => {
     setLoading(true);
 
     const fetchData = async () => {
-      await new Promise((r) => {
-        setTimeout(r, 1000);
-      });
       try {
         const response = await fetch(urlRef.current, { signal, ...optionsRef.current });
         const jsonResult = await response.json();

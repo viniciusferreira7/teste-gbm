@@ -1,11 +1,4 @@
-import { useFetch } from '../customHook/useFetch';
-
-export const summary = () => {
-  //eslint-disable-next-line
-  const [result, loading] = useFetch(
-    'https://api.tot.apigbmtech.com/api/selective-process/wagons?authorization=67c9d5c3887b64c33671bb25f681753a',
-  );
-
+export const summary = (result) => {
   if (result !== null) {
     const soja = () => {
       const RUMO = [];
@@ -14,11 +7,11 @@ export const summary = () => {
 
       result.map((item) => {
         if (item.railroad === 'RUMO' && item.product === 'Soja')
-          RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
         if (item.railroad === 'MRS' && item.product === 'Soja')
-          MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
         if (item.railroad === 'VLI' && item.product === 'Soja')
-          VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
       });
 
       const reducer = (number, nextNumber) => {
@@ -43,11 +36,11 @@ export const summary = () => {
 
       result.map((item) => {
         if (item.railroad === 'RUMO' && item.product === 'Milho')
-          RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
         if (item.railroad === 'MRS' && item.product === 'Milho')
-          MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
         if (item.railroad === 'VLI' && item.product === 'Milho')
-          VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+          VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
       });
 
       const reducer = (number, nextNumber) => {
@@ -71,12 +64,9 @@ export const summary = () => {
       const VLI = [];
 
       result.map((item) => {
-        if (item.railroad === 'RUMO')
-          RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
-        if (item.railroad === 'MRS')
-          MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
-        if (item.railroad === 'VLI')
-          VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace(',', '.')));
+        if (item.railroad === 'RUMO') RUMO.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
+        if (item.railroad === 'MRS') MRS.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
+        if (item.railroad === 'VLI') VLI.push(parseFloat(Number(item.weight).toLocaleString('en-US').replace('.')));
       });
 
       const reducer = (number, nextNumber) => {
@@ -99,7 +89,7 @@ export const summary = () => {
   }
 };
 
-// createdAt: "2021-12-05T16:25:38.476Z"
+// createdAt: "2021-12-05T16:25:28.476Z"
 // deletedAt: null
 // downloadEndTime: "2021-12-05T12:59:38.000Z"
 // downloadStartTime: "2021-12-05T12:45:38.000Z"
