@@ -10,8 +10,13 @@ export const Home = () => {
   const [result, loading] = useFetch('https://api.tot.apigbmtech.com/api/selective-process/wagons?authorization=67c9d5c3887b64c33671bb25f681753a');
   return (
     <>
-      <List result={result} loading={loading} />
-      <SummaryObs />
+      {loading && <h2>Carregando...</h2>}
+      {result !== null && (
+        <>
+          <List result={result} loading={loading} />
+          <SummaryObs />
+        </>
+      )}
     </>
   );
 };
