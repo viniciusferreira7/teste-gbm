@@ -2,17 +2,18 @@ import './styles.css';
 
 import React from 'react';
 import { useFetch } from '../../customHook/useFetch';
-import { List } from '../../components/List';
-import { Observation } from '../../components/Observation';
-import { Weighing } from '../../components/Weighing';
+import { AsideBar } from '../../components/AsideBar';
+// import { List } from '../../components/List';
+// import { Observation } from '../../components/Observation';
+// import { Weighing } from '../../components/Weighing';
 
 export const Home = () => {
   //eslint-disable-next-line
   const [result, loading] = useFetch('https://api.tot.apigbmtech.com/api/selective-process/wagons?authorization=67c9d5c3887b64c33671bb25f681753a');
   return (
     <>
-      <aside></aside>
-      <main>
+      <AsideBar />
+      {/* <main>
         {loading && <h2>Carregando...</h2>}
         {result !== null && (
           <>
@@ -30,7 +31,7 @@ export const Home = () => {
             </section>
           </>
         )}
-      </main>
+      </main> */}
     </>
   );
 };

@@ -1,0 +1,21 @@
+aside{
+  width:100%;
+  max-width: 280px;
+  background-color: #033278;
+  height:100vh;
+  padding: 2%;
+}
+
+img{
+  width: 160px;
+  position:relative;
+  left: 20%;
+}
+
+h4{
+  color: white;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 2px;
+}

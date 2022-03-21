@@ -1,4 +1,4 @@
-export const summary = (result) => {
+export const calcSummary = (result) => {
   if (result !== null) {
     const soja = () => {
       const RUMO = [];

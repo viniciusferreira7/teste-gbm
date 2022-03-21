@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Home } from './templetes/Home/Home';
+import { Home } from './templetes/Home';
 
 ReactDOM.render(
   <React.StrictMode>
