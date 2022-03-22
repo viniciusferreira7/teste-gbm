@@ -1,5 +1,56 @@
+.list{
+  width: 100%;
+}
+
+.carregando{
+  position: absolute;
+  top: 55%;
+  left:58%;
+  transform: translate(-50%, -50%);
+}
+
 .row{
   width: 100%;
   display: flex;
   flex-direction: row;
+}
+
+.col{
+  padding:0 1% ;
+}
+
+.col ul h4{
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.col ul p{
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.product, .date {
+  padding: 0 60px ;
+}
+
+.listTotal{
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  text-align: center;
+}
+
+.listTotal:last-of-type{
+  text-align: left;
+}
+
+@media screen and (max-width:376px){
+  .row{
+    overflow-x: scroll;
+  }
+
+  .product, .date {
+    padding: 0 10px ;
+  }
 }

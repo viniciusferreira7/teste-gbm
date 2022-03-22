@@ -1,3 +1,5 @@
+import './styles.css';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useFetch } from '../../customHook/useFetch';
 
@@ -11,7 +13,7 @@ export const Observation = () => {
   );
 
   const [edit, setEdit] = useState(false);
-  const [value, setValue] = useState(`Carregando observações...`);
+  const [value, setValue] = useState(text.current);
   const [send, setSend] = useState({
     description: 'Produtividade alta no terminal da Rumo',
   });
@@ -51,24 +53,36 @@ export const Observation = () => {
   };
 
   return (
-    <>
+    <section className="observation">
+      <div className="obsWrapper">
+        <h2>Observações</h2>
+        {!edit ? (
+          <button className="btn blue " onClick={() => handleClick()}>
+            Editar
+          </button>
+        ) : (
+          <>
+            <button className="btn red" onClick={() => handleClickCancel()}>
+              Cancelar
+            </button>
+            <button className="btn blue " onClick={() => handleClick()}>
+              Salvar
+            </button>
+          </>
+        )}
+      </div>
+
       {!edit ? (
-        <>
-          <button onClick={() => handleClick()}>Editar</button>
-          <p>{text.current}</p>
-        </>
+        <p className="obsText">{text.current}</p>
       ) : (
-        <>
-          <button onClick={() => handleClick()}>Salvar</button>
-          <button onClick={() => handleClickCancel()}>Cancelar</button>
-          <textarea
-            ref={inputRef}
-            type="text"
-            value={value}
-            onChange={() => setValue(inputRef.current.value)}
-          ></textarea>
-        </>
+        <textarea
+          className="obsText"
+          ref={inputRef}
+          type="text"
+          value={value}
+          onChange={() => setValue(inputRef.current.value)}
+        ></textarea>
       )}
-    </>
+    </section>
   );
 };

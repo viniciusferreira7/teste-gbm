@@ -1,0 +1,35 @@
+header{
+  width: 100%;
+  padding: 1% 2%;
+  background-color: #f2f3f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #386099;
+  font-size:40px ;
+  cursor: pointer;
+}
+
+.userWrapper{
+  display: flex;
+  align-items: center;
+}
+
+img.user{
+  width:45px;
+  cursor: pointer;
+}
+
+header p{
+  padding-left:15px;
+  color: #949496;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media screen and (max-width:415px){
+  header{
+    max-width:400px;
+  }
+}

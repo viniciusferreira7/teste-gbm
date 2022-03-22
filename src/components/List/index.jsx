@@ -6,7 +6,7 @@ import { total } from '../../function/total';
 
 export const List = ({ result }) => {
   return (
-    <div>
+    <div className="list">
       <div className="row">
         <div className="col">
           <ul>
@@ -24,7 +24,7 @@ export const List = ({ result }) => {
             ))}
           </ul>
         </div>
-        <div className="col">
+        <div className="col product">
           <ul>
             <h4>Produto</h4>
             {result.map((wagon) => (
@@ -32,7 +32,7 @@ export const List = ({ result }) => {
             ))}
           </ul>
         </div>
-        <div className="col">
+        <div className="col date">
           <ul>
             <h4>Data/Hora Início Desc.</h4>
             {result.map((wagon) => (
@@ -40,12 +40,13 @@ export const List = ({ result }) => {
             ))}
           </ul>
         </div>
-        <div className="col">
+        <div className="col date">
           <ul>
             <h4>Data/Hora Fim Desc.</h4>
             {result.map((wagon) => (
               <p key={wagon.id}>{wagon.downloadEndTime}</p>
             ))}
+            <p className="listTotal">Total :</p>
           </ul>
         </div>
         <div className="col">
@@ -54,10 +55,10 @@ export const List = ({ result }) => {
             {result.map((wagon) => (
               <p key={wagon.id}>{Number(wagon.weight).toLocaleString('en-US')}</p>
             ))}
+            <p>{total(result)}</p>
           </ul>
         </div>
       </div>
-      <p>Total : {total(result)}</p>
     </div>
   );
 };

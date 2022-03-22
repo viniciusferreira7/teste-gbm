@@ -2,20 +2,43 @@ aside{
   width:100%;
   max-width: 280px;
   background-color: #033278;
-  height:100vh;
-  padding: 2%;
-}
-
-img{
-  width: 160px;
-  position:relative;
-  left: 20%;
-}
-
-h4{
+  height: auto;
+  min-height: 100vh;
+  padding: 1%;
   color: white;
-  font-family: "Roboto";
+  transition: position,  300ms ease-in-out;
+}
+
+.menu{
+  position: absolute;
+  left: -100%;
+}
+
+aside img{
+  width: 140px;
+  position:relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+aside h4{
   font-weight: 500;
   font-size: 17px;
   letter-spacing: 2px;
+  padding: 20px 0;
 }
+
+.home{
+  display: flex;
+  font-size: 28px;
+  align-items: center;
+  padding-left: 3%;
+}
+
+
+aside h6{
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding-left: 8%;
+}
+

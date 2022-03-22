@@ -1,38 +1,51 @@
 import './styles.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFetch } from '../../customHook/useFetch';
 import { AsideBar } from '../../components/AsideBar';
-// import { List } from '../../components/List';
-// import { Observation } from '../../components/Observation';
-// import { Weighing } from '../../components/Weighing';
+import { HeaderMenu } from '../../components/HeaderMenu';
+import { List } from '../../components/List';
+import { Observation } from '../../components/Observation';
+import { Weighing } from '../../components/Weighing';
 
 export const Home = () => {
-  //eslint-disable-next-line
-  const [result, loading] = useFetch('https://api.tot.apigbmtech.com/api/selective-process/wagons?authorization=67c9d5c3887b64c33671bb25f681753a');
+  const [click, setClick] = useState(false);
+  const [result, loading] = useFetch(
+    'https://api.tot.apigbmtech.com/api/selective-process/wagons?authorization=67c9d5c3887b64c33671bb25f681753a',
+  );
+  const [menu, setMenu] = useState(false);
+
+  const handleCLick = () => {
+    setClick((c) => !c);
+  };
+
+  const handleMenu = () => {
+    setMenu((c) => !c);
+  };
+
   return (
-    <>
-      <AsideBar />
-      {/* <main>
-        {loading && <h2>Carregando...</h2>}
-        {result !== null && (
+    <div className="container">
+      <AsideBar menu={menu} />
+      <main>
+        <HeaderMenu handleMenu={handleMenu} />
+        <div className="btnWrapper">
+          <h2>Vagões Cadastrados</h2>
+          <button className="btn-click" onClick={handleCLick}>
+            Buscar vagões API
+          </button>
+        </div>
+        {click && loading && <h2 className="carregando">Carregando...</h2>}
+        {click && result !== null && (
           <>
             <section className="wagons">
-              <h2>Vagões Cadastrados</h2>
               <List result={result} loading={loading} />
             </section>
-            <section className="weighing">
-              <h2>Resumo de pesagens</h2>
-              <Weighing result={result} />
-            </section>
-            <section className="observation">
-              <h2>Observações</h2>
-              <Observation />
-            </section>
+            <Weighing result={result} />
+            <Observation />
           </>
         )}
-      </main> */}
-    </>
+      </main>
+    </div>
   );
 };
 //id: 11, plate: 'HPT-030854-9', railroad: 'RUMO', product: 'Soja', downloadStartTime: '2021-12-05T08:24:38.000Z', …

@@ -1,3 +1,12 @@
+.weighing{
+  padding: 0 1%;
+}
+.weighing h2 {
+  font-weight: 900;
+  padding-bottom: 2%;
+  letter-spacing: 1px;
+}
+
 .wrapper{
   width: 100%;
   display: flex;
@@ -8,8 +17,29 @@
 .wrapper h4 {
   font-weight: normal;
   text-align: center;
+  margin-bottom: 10px;
 }
-.group{
+.group {
   width: 100%;
   display: flex;
 }
+
+.group p {
+  padding:8px 0;
+}
+
+.two{
+  padding: 0 90px;
+}
+
+.mrs, .vli, .total{
+  padding:0 20px;
+}
+
+
+@media screen and (max-width:376px){
+  .weighing{
+    overflow-x: scroll;
+  }
+}
+

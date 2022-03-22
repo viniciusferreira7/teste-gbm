@@ -1,3 +1,54 @@
+.container{
+  width: 100%;
+  height: 200%;
+  display: flex;
+}
+
 main{
   width: 100%;
+}
+
+.wagons{
+  width: 100%;
+}
+
+.btnWrapper{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1% 1%;
+}
+
+.btnWrapper  button{
+  width:17%;
+  padding: 1.5% 0;
+  background-color: #033278;
+  font-size:16px;
+  border-radius: 15px;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.btn-click:hover{
+  padding: 1.3%;
+  background-color: white;
+  color: #033278;
+  border: 3px solid #033278;
+}
+
+.wagons h2{
+  font-size: 20px;
+  font-weight:800;
+}
+
+
+
+@media screen and (max-width:376px){
+  .btnWrapper  button{
+    width:25%;
+    font-size: 12px;
+    padding: 1.5% 2%;
+  }
 }
