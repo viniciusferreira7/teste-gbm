@@ -55,7 +55,7 @@ export const List = ({ result }) => {
             {result.map((wagon) => (
               <p key={wagon.id}>{Number(wagon.weight).toLocaleString('en-US')}</p>
             ))}
-            <p>{total(result)}</p>
+            <p className="listTotal">{total(result)}</p>
           </ul>
         </div>
       </div>
